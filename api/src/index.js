@@ -2,8 +2,11 @@ const express = require('express')
 const app = express()
 const port = process.env.port || 3000
 
-const bodyParser = require('body-parser')
-app.use(bodyParser())
+app.use(require('cors')())
+app.use(require('body-parser').urlencoded({ extended: true }))
+app.use(require('body-parser').json())
+// app.use(require('express-ws')(app))
+
 app.get('/', function(req, res) {
     res.send('Hello World!')
 })
