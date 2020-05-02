@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///Users/jonathansamson/Documents/code/my-sync/src/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head>
+    <body>
+        <iframe id="player" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="390" src="./index_files/M7lc1UVf-VE.html"></iframe>
+
+        <div>
+            <button onclick="clearTimeout(timeout)">preserve my sanity</button>
+            <input id="input-seek" placeholder="seconds">
+            <button id="seek-button">seek</button>
+        </div>
+
+        <script type="text/javascript" id="www-widgetapi-script" src="./index_files/www-widgetapi.js" async=""></script><script type="text/javascript">
+            const seekButton = document.getElementById('seek-button');
+            seekButton.addEventListener('click', seek);
+            function seek(event) {
+                const seconds = document.getElementById('input-seek').value;
+                console.log('seconds', seconds);
+                player.seekTo(Number(seconds))
+            }
+        </script>
+         
+        <script type="text/javascript">
+            
+            var player;
+            function onYouTubeIframeAPIReady() {
+                console.log('onYouTubeIframeAPIReady');
+                player = new YT.Player('player', {
+                    height: '390',
+                    width: '640',
+                    videoId: 'M7lc1UVf-VE',
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            }
+            function onPlayerReady(event) {
+                event.target.playVideo();
+            }
+            var timeout
+            function onPlayerStateChange(event) {
+                console.log('state change', event.data);
+                clearTimeout(timeout)
+                if (event.data === YT.PlayerState.PLAYING) {
+                    console.log('PLAYING at ' + player.getCurrentTime() + 'seconds');
+                    timeout = setTimeout(pauseVideo, 2000);
+                } else if (event.data === YT.PlayerState.PAUSED) {
+                    console.log('PAUSED at ' + player.getCurrentTime() + 'seconds');
+                    timeout = setTimeout(playVideo, 2000);
+                }
+            }
+            function pauseVideo() {
+                player.pauseVideo();
+            }
+            function playVideo() {
+                player.playVideo();
+            }
+        </script>
+        <script src="./index_files/iframe_api"></script>
+    
+</body></html>
