@@ -5,6 +5,16 @@
         <div id="player"></div>
         <button>play/pause</button>
         <script>
+            const API_URL_WS = 'ws://localhost:3000'
+            const ws = new WebSocket(API_URL_WS)
+            ws.onopen = () => {
+                console.log('Now connected')
+            }
+            ws.onclose = () => {
+                console.log('Now closed')
+            }
+        </script>
+        <script>
             const API_URL = 'http://localhost:3000'
             function onYouTubeIframeAPIReady() {
                 player = new YT.Player('player', {
