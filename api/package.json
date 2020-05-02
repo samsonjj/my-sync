@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/samsonjj/my-sync#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "nodemon": "^2.0.3",
     "uniqid": "^5.2.0"
   }
 }
