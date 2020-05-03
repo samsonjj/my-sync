@@ -9,7 +9,7 @@
         </div>
         <script>
             let ws
-            const API_URL = 'http://localhost:3000'
+            const API_URL = 'http://18.204.153.218:3000'
             function onYouTubeIframeAPIReady() {
                 player = new YT.Player('player', {
                     height: '390',
@@ -55,7 +55,7 @@
             }
         </script>
         <script>
-            const API_URL_WS = 'ws://localhost:3000'
+            const API_URL_WS = 'ws://18.204.153.218:3000'
             ws = new WebSocket(API_URL_WS)
 
             ws.onopen = () => {
