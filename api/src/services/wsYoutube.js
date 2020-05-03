@@ -25,7 +25,7 @@ function wsYoutube(ws) {
         // }
     })
     ws.on('close', () => {
-        sessionStore.removeSocketFromSession(ws)
+        sessionStore.clearSocketSession({ ws })
     })
 }
 
